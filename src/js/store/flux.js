@@ -1,20 +1,28 @@
+import rigoImage from "../../img/rigo-baby.jpg";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			contacts:[
+				{name:"Arnaldo", address:"Venezuela", email:"arnaldo@4geeks.com", phone:"+5812321321321", img:rigoImage},
+				{name:"Arnaldo", address:"Venezuela", email:"arnaldo@4geeks.com", phone:"+5812321321321", img:rigoImage},
+				{name:"Arnaldo", address:"Venezuela", email:"arnaldo@4geeks.com", phone:"+5812321321321", img:rigoImage},
+				{name:"Arnaldo", address:"Venezuela", email:"arnaldo@4geeks.com", phone:"+5812321321321", img:rigoImage},
+				{name:"Arnaldo", address:"Venezuela", email:"arnaldo@4geeks.com", phone:"+5812321321321", img:rigoImage}
+			],
+			numero:221
 		},
 		actions: {
+			addContact:(contact)=>{
+				// AGregar validacion para que no admita valores vacios
+				let store=getStore()
+				let newContacts=[...store.contacts,contact]
+				setStore({contacts:newContacts})
+			},
+			delContact:(index)=>{
+				let newContacts=[...getStore().contacts]
+				newContacts.splice(index,1)
+				setStore({contacts:newContacts})
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
