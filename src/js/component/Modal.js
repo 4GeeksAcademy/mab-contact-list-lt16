@@ -7,11 +7,11 @@ export const Modal = props => {
 		//initialize state here
 	});
 	return (
-		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
+		<div className="modal fade" tabIndex="-1" role="dialog" id={"editModal-"+props.index} aria-labelledby={"modalLabel-"+props.index} aria-hidden="true">
 			<div className="modal-dialog" role="document">
 				<div className="modal-content">
 					<div className="modal-header">
-						<h5 className="modal-title">Are you sure?</h5>
+						<h5 className="modal-title">Contact {props.index}</h5>
 						{props.onClose ? (
 							<button
 								onClick={() => props.onClose()}
@@ -22,7 +22,7 @@ export const Modal = props => {
 								<span aria-hidden="true">&times;</span>
 							</button>
 						) : (
-							""
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						)}
 					</div>
 					<div className="modal-body">

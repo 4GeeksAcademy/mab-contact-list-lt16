@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import { ContactCard } from "../component/ContactCard";
 import "../../styles/home.css";
 import {Context} from '../store/appContext'
+import { Modal } from "../component/Modal";
 
 export const Home = () => {
 	const {store, actions}=useContext(Context)
@@ -12,6 +13,7 @@ export const Home = () => {
 		<h1>Contact List</h1>
 		<div className="list-group contact-list">
 			{contacts.map((contact, index)=>
+			<div key={index}>
 				<ContactCard
 					name={contact.name}
 					address={contact.address}
@@ -19,8 +21,10 @@ export const Home = () => {
 					phone={contact.phone}
 					img={contact.img}
 					onDelete={()=>actions.delContact(index)}
-					key={index}
+					index={index}
 				/>
+				<Modal index={index}></Modal>
+			</div>
 			)}
 		</div>
 	</div>
