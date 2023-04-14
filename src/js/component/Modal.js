@@ -6,6 +6,13 @@ export const Modal = props => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
+	useEffect(()=>{
+		if(props.index==-1){
+			//nuevo contacto
+		} else if(props.index>=0){
+			//editar contactos
+		} else { }
+	}, [])
 	return (
 		<div className="modal fade" tabIndex="-1" role="dialog" id={"editModal-"+props.index} aria-labelledby={"modalLabel-"+props.index} aria-hidden="true">
 			<div className="modal-dialog" role="document">
@@ -26,7 +33,22 @@ export const Modal = props => {
 						)}
 					</div>
 					<div className="modal-body">
-						<p>Warning: unknown consequences after this point... Kidding!</p>
+					<div className="mb-3">
+					<label htmlFor="nameInput" className="form-label">Name</label>
+					<input type="text" className="form-control" id="nameInput" placeholder="maria amalia"> </input>
+					</div>	
+					<div className="mb-3">
+					<label htmlFor="adressInput" className="form-label">Address</label>
+					<input type="text" className="form-control" id="adressInput" placeholder="la plata"> </input>
+					</div>	
+					<div className="mb-3">
+					<label htmlFor="phoneInput" className="form-label">Phone</label>
+					<input type="text" className="form-control" id="phoneInput" placeholder="000000"> </input>
+					</div>	
+					<div className="mb-3">
+					<label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+					<input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"> </input>
+					</div>
 					</div>
 					<div className="modal-footer">
 						<button type="button" className="btn btn-primary">

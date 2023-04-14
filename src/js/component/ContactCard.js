@@ -14,7 +14,7 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<button  type="button" class="btn" data-bs-toggle="modal" data-bs-target={"#editModal-"+props.index}>
+						<button  type="button" className="btn" data-bs-toggle="modal" data-bs-target={"#editModal-"+props.index}>
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
 						<button className="btn" onClick={() => props.onDelete()}>
