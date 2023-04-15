@@ -1,18 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
 export const Modal = props => {
-	const [state, setState] = useState({
-		//initialize state here
-	});
+	const [contactName, setcontactName] = useState(" ")
+	const [address, setaddress] = useState(" ")
+	const [phone, setphone] = useState(" ")
+	const [email, setemail] = useState(" ")
+	const {store, actions} = useContext(Context)
+
+	
 	useEffect(()=>{
 		if(props.index==-1){
 			//nuevo contacto
 		} else if(props.index>=0){
 			//editar contactos
+			let updateContacts= store.contacts[props.index]
+			setcontactName(updateContacts.name)
+			setaddress(updateContacts.address)
+			setemail(updateContacts.email)
+			setphone(updateContacts.phone)
 		} else { }
 	}, [])
+
+	function guardar () {
+		let newContact={
+			name:contactName,
+			addres:address,
+			phone:phone,
+			email:email,
+		}
+
+		if(props.index==-1){
+			//nuevo contacto
+			actions.addContact(newContact)
+			
+		} else if(props.index>=0){
+			actions.updateContact(newContact, props.index)
+		}		
+
+	}
 	return (
 		<div className="modal fade" tabIndex="-1" role="dialog" id={"editModal-"+props.index} aria-labelledby={"modalLabel-"+props.index} aria-hidden="true">
 			<div className="modal-dialog" role="document">
@@ -34,29 +62,35 @@ export const Modal = props => {
 					</div>
 					<div className="modal-body">
 					<div className="mb-3">
-					<label htmlFor="nameInput" className="form-label">Name</label>
-					<input type="text" className="form-control" id="nameInput" placeholder="maria amalia"> </input>
+					<label htmlFor="contactNameInput" className="form-label">Name</label>
+					<input type="text" className="form-control" id="nameInput" placeholder="maria amalia"
+					value={contactName}
+					onChange={e=>setcontactName(e.target.value)}></input>
 					</div>	
 					<div className="mb-3">
-					<label htmlFor="adressInput" className="form-label">Address</label>
-					<input type="text" className="form-control" id="adressInput" placeholder="la plata"> </input>
+					<label htmlFor="addressInput" className="form-label">address</label>
+					<input type="text" className="form-control" id="addressInput" placeholder="la plata"
+					value={address}
+					onChange={e=>setaddress(e.target.value)}></input>
 					</div>	
 					<div className="mb-3">
 					<label htmlFor="phoneInput" className="form-label">Phone</label>
-					<input type="text" className="form-control" id="phoneInput" placeholder="000000"> </input>
+					<input type="text" className="form-control" id="phoneInput" placeholder="000000"
+					value={phone}
+					onChange={e=>setphone(e.target.value)}></input>
 					</div>	
 					<div className="mb-3">
-					<label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
-					<input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"> </input>
+					<label htmlFor="emailInput" className="form-label">Email address</label>
+					<input type="email" className="form-control" id="emailInput" placeholder="name@example.com"
+					value={email}
+					onChange={e=>setname(e.target.value)}></input>
 					</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary">
-							Oh no!
+						<button type="button" onClick={guardar} className="btn btn-primary" data-bs-dismiss="modal" data-bs-target={"#editModal-"+props.index}>
+							Guardar
 						</button>
-						<button type="button" className="btn btn-secondary" data-dismiss="modal">
-							Do it!
-						</button>
+						
 					</div>
 				</div>
 			</div>

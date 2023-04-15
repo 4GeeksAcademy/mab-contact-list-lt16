@@ -2,6 +2,7 @@ import React,{useContext} from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImage from "../../img/rigo-baby.jpg";
+import { Modal } from "./Modal";
 
 export const Navbar = () => {
 	const {actions}=useContext(Context)
@@ -12,14 +13,13 @@ export const Navbar = () => {
 				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
 			</Link>
 			<div className="ml-auto">
-				<button onClick={()=>actions.addContact({
-					name:"Arnaldo", 
-					address:"Venezuela", 
-					email:"arnaldo@4geeks.com", 
-					phone:"+5812321321321", 
-					img:rigoImage
-					})} className="btn btn-primary">Agregar</button>
+			<button  type="button" className="btn" data-bs-toggle="modal" data-bs-target={"#editModal-"+-1}>
+				Agregar
+			</button>
+					<Modal index={-1}></Modal>
+
 			</div>
+			
 		</nav>
 	);
 };

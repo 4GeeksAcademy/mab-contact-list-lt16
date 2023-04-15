@@ -23,6 +23,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				newContacts.splice(index,1)
 				setStore({contacts:newContacts})
 			},
+			updateContact:(data, index)=>{
+			let newContacts=[...getStore().contacts]
+			newContacts[index]= {...data,img:rigoImage}
+			setStore({contacts:newContacts})
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
