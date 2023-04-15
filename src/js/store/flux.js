@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addContact:(contact)=>{
 				// AGregar validacion para que no admita valores vacios
 				let store=getStore()
-				let newContacts=[...store.contacts,contact]
+				let newContacts=[...store.contacts,{...contact, img:rigoImage}]
 				setStore({contacts:newContacts})
 			},
 			delContact:(index)=>{
@@ -25,8 +25,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			updateContact:(data, index)=>{
 			let newContacts=[...getStore().contacts]
-			newContacts[index]= {...data,img:rigoImage}
+			newContacts[index]= {...data, img:rigoImage}
 			setStore({contacts:newContacts})
+			
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
