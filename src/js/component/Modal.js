@@ -47,7 +47,7 @@ export const Modal = props => {
 			<div className="modal-dialog" role="document">
 				<div className="modal-content">
 					<div className="modal-header">
-						<h5 className="modal-title">Contact{props.index}</h5>
+						<h5 className="modal-title">Contact <small className="text-muted">{props.index}</small></h5>
 						{props.onClose ? (
 							<button
 								onClick={() => props.onClose()}
@@ -69,7 +69,7 @@ export const Modal = props => {
 					onChange={e=>setcontactName(e.target.value)}></input>
 					</div>	
 					<div className="mb-3">
-					<label htmlFor="addressInput" className="form-label">address</label>
+					<label htmlFor="addressInput" className="form-label">Address</label>
 					<input type="text" className="form-control" id="addressInput" placeholder="la plata"
 					value={address}
 					onChange={e=>setaddress(e.target.value)}></input>
@@ -81,14 +81,14 @@ export const Modal = props => {
 					onChange={e=>setphone(e.target.value)}></input>
 					</div>	
 					<div className="mb-3">
-					<label htmlFor="emailInput" className="form-label">Email address</label>
+					<label htmlFor="emailInput" className="form-label">Email Address</label>
 					<input type="email" className="form-control" id="emailInput" placeholder="name@example.com"
 					value={email}
 					onChange={e=>setemail(e.target.value)}></input>
 					</div>
 					</div>
 					<div className="modal-footer">
-						<button type="button" onClick={guardar} className="btn btn-primary" data-bs-dismiss="modal" data-bs-target={"#editModal-"+props.index}>
+						<button type="button" onClick={guardar} className="btn btn-dark" data-bs-dismiss="modal" data-bs-target={"#editModal-"+props.index}>
 							Guardar
 						</button>
 						

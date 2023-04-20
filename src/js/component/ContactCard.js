@@ -11,24 +11,24 @@ export const ContactCard = props => {
 	const {store, actions}=useContext(Context)
 
 	return (
-		<li className="list-group-item">
+		<li className="list-group-item mb-3">
 			<div className="row w-100">
-				<div className="col-12 col-sm-6 col-md-3 px-0">
+				<div className="col-12 col-sm-6 col-md-3 py-0">
 					<img src={store.rigo}  className="rounded-circle mx-auto d-block img-fluid" />
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<button  type="button" className="btn" data-bs-toggle="modal" data-bs-target={"#editModal-"+props.index}>
+						<button  type="button" className="btn btn-dark mx-3" data-bs-toggle="modal" data-bs-target={"#editModal-"+props.index}>
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
-						<button className="btn" onClick={() => props.onDelete()}>
+						<button className="btn btn-dark" onClick={() => props.onDelete()}>
 							<i className="fas fa-trash-alt" />
 						</button>
 					</div>
-					<label className="name lead">{props.full_name}</label>
+					<label className="name lead text-uppercase">{props.full_name}</label>
 					<br />
 					<i className="fas fa-map-marker-alt text-muted mr-3" />
-					<span className="text-muted">{props.address}</span>
+					<span className="text">{props.address}</span>
 					<br />
 					<span
 						className="fa fa-phone fa-fw text-muted mr-3"
@@ -36,7 +36,7 @@ export const ContactCard = props => {
 						title=""
 						data-original-title={props.phone}
 					/>
-					<span className="text-muted small">{props.phone}</span>
+					<span className="text small">{props.phone}</span>
 					<br />
 					<span
 						className="fa fa-envelope fa-fw text-muted mr-3"
@@ -44,7 +44,7 @@ export const ContactCard = props => {
 						data-original-title=""
 						title=""
 					/>
-					<span className="text-muted small text-truncate">{props.email}</span>
+					<span className="text small text-truncate">{props.email}</span>
 				</div>
 			</div>
 		</li>
